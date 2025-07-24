@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MediaSoup Minimal Example</title>
+</head>
+<body>
+  <h1>MediaSoup Minimal Example</h1>
+  <button id="joinRoomBtn">Join Room</button>
+  <pre id="output"></pre>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    document.getElementById('joinRoomBtn').onclick = () => {
+      socket.emit('joinRoom', 'room1', (response) => {
+        if (response.ok) {
+          document.getElementById('output').textContent = 'Router RTP Capabilities:\n' + JSON.stringify(response.routerRtpCapabilities, null, 2);
+        } else {
+          document.getElementById('output').textContent = 'Failed to join room';
+        }
+      });
+    };
+  </script>
+</body>
+</html>
