@@ -46,7 +46,7 @@ jobs:
            rm  /var/www/ws/.gitignore
           
            cd /var/www/ws/
-           //npm install
+           
            pm2 restart backend --update-env 
            pm2 reload backend
            
