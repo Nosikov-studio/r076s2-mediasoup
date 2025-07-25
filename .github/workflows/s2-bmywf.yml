@@ -1,0 +1,60 @@
+name: MBs2
+on: 
+  push
+  #workflow_dispatch   
+
+
+env:
+  SERVER_HOST: '85.28.47.165'
+  SERVER_USER: root
+  SERVER_PATH: /var/www/ws/
+# Бэкэнд  находится в папке /var/www/ws/
+
+jobs:
+
+  deployJobs:
+    runs-on: ubuntu-latest
+    steps:
+    - name: part1
+      uses: actions/checkout@v2
+       # Setup key
+    - name: part2
+      run: set -eu
+
+    - name: part3  
+      run: mkdir "$HOME/.ssh"
+    
+    - name: part4
+      run: echo "${{ secrets.PKEY }}" > "$HOME/.ssh/key"
+
+    - name: part5
+      run: chmod 600 "$HOME/.ssh/key"
+
+      # Deploy
+    - name: part6
+      run: rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:${{ env.SERVER_PATH }}
+
+    - name: part7 - Restart Express server on remote
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ env.SERVER_HOST }}
+        username: ${{ env.SERVER_USER }}
+        key: ${{ secrets.PKEY }}
+        script: |
+           rm -rf /var/www/ws/.git/
+           rm -rf /var/www/ws/.github/
+           rm  /var/www/ws/.gitignore
+          
+           cd /var/www/ws/
+           npm instal
+           pm2 restart backend --update-env 
+           pm2 reload backend
+           
+           
+          # pm2 describe backend || pm2 start index.js --name backend --watch 
+          #  nohup node app.js > output.log 2>&1 &
+          #  pm2 delete backend || true
+          #  pm2 start /var/www/trur/app.js --name backend --watch
+          #  pm2 save
+          #  pm2 startup
+          #  reboot
