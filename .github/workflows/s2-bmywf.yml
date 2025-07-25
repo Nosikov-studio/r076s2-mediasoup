@@ -32,7 +32,7 @@ jobs:
 
       # Deploy
     - name: part6
-      run: rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:${{ env.SERVER_PATH }}
+      run: rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress  . ${{ env.SERVER_USER }}@${{ env.SERVER_HOST }}:${{ env.SERVER_PATH }}
 
     - name: part7 - Restart Express server on remote
       uses: appleboy/ssh-action@master
@@ -46,7 +46,7 @@ jobs:
            rm  /var/www/ws/.gitignore
           
            cd /var/www/ws/
-           npm instal
+           //npm install
            pm2 restart backend --update-env 
            pm2 reload backend
            
