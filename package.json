@@ -20,6 +20,7 @@
     "express": "^5.1.0",
     "http": "^0.0.1-security",
     "mediasoup": "^3.16.7",
+    "mediasoup-client": "^3.12.5",
     "socket.io": "^4.8.1"
   }
 }

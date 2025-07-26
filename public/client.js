@@ -1,20 +1,20 @@
-// import * as mediasoupClient from 'mediasoup-client'; // убрать, т.к. используете CDN и глобальный объект
-import { Device } from 'mediasoup-client';
-const device = new Device();
-//const device = new mediasoupClient.Device();
+//import * as mediasoupClient from 'mediasoup-client'; // убрать, т.к. используете CDN и глобальный объект
 
-let sendTransport, recvTransport, producer, consumer;
+const device = new mediasoupClient.Device();
+
+let  sendTransport, recvTransport, producer, consumer;
 
 async function join() {
 
   socket.emit('getRtpCapabilities', {}, async (rtpCapabilities) => {
+    device = new mediasoupClient.Device();
     await device.load({ routerRtpCapabilities: rtpCapabilities });
     createSendTransport();
   });
 }
 
 // Опционально сделать device глобальным для отладки:
-window.device = device;
+//window.device = device;
 
 function createSendTransport() {
   socket.emit('createWebRtcTransport', { direction: 'send' }, data => {
