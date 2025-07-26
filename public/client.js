@@ -7,7 +7,7 @@ let  sendTransport, recvTransport, producer, consumer;
 async function join() {
 
   socket.emit('getRtpCapabilities', {}, async (rtpCapabilities) => {
-    device = new mediasoupClient.Device();
+    //device = new mediasoupClient.Device();
     await device.load({ routerRtpCapabilities: rtpCapabilities });
     createSendTransport();
   });
