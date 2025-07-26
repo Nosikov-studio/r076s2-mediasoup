@@ -1,4 +1,4 @@
-//import * as mediasoupClient from 'mediasoup-client'; // убрать, т.к. используете CDN и глобальный объект
+import * as mediasoupClient from 'mediasoup-client'; // убрать, т.к. используете CDN и глобальный объект
 
 const device = new mediasoupClient.Device();
 
