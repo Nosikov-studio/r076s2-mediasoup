@@ -1,6 +1,7 @@
 //import * as mediasoupClient from 'mediasoup-client'; // убрать, т.к. используете CDN и глобальный объект
 import { Device } from 'mediasoup-client';
-const device = new mediasoupClient.Device();
+const device = new Device();
+//const device = new mediasoupClient.Device();
 
 let  sendTransport, recvTransport, producer, consumer;
 
