@@ -1,11 +1,12 @@
 // import * as mediasoupClient from 'mediasoup-client'; // убрать, т.к. используете CDN и глобальный объект
-
-const device = new mediasoupClient.Device();
+import { Device } from 'mediasoup-client';
+const device = new Device();
+//const device = new mediasoupClient.Device();
 
 let sendTransport, recvTransport, producer, consumer;
 
 async function join() {
-  
+
   socket.emit('getRtpCapabilities', {}, async (rtpCapabilities) => {
     await device.load({ routerRtpCapabilities: rtpCapabilities });
     createSendTransport();
