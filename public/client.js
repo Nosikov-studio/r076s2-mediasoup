@@ -1,10 +1,14 @@
-import * as mediasoupClient from 'mediasoup-client';
+//import * as mediasoupClient from 'mediasoup-client';
+
+
 
 let device, sendTransport, recvTransport, producer, consumer;
+// Используйте mediasoupClient глобально, например:
+device = new mediasoupClient.Device();
 
 async function join() {
   socket.emit('getRtpCapabilities', {}, async (rtpCapabilities) => {
-    device = new mediasoupClient.Device();
+    //device = new mediasoupClient.Device();
     await device.load({ routerRtpCapabilities: rtpCapabilities });
     createSendTransport();
   });
