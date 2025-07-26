@@ -2,13 +2,13 @@
 
 
 
-let device, sendTransport, recvTransport, producer, consumer;
+let  sendTransport, recvTransport, producer, consumer;
 // Используйте mediasoupClient глобально, например:
-// device = new mediasoupClient.Device();
+window.device = new mediasoupClient.Device();
 
 async function join() {
   socket.emit('getRtpCapabilities', {}, async (rtpCapabilities) => {
-    device = new mediasoupClient.Device();
+    //device = new mediasoupClient.Device();
     await device.load({ routerRtpCapabilities: rtpCapabilities });
     createSendTransport();
   });
