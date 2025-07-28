@@ -1,6 +1,6 @@
 {
-  "name": "mediasoup-sample-app",
-  "version": "1.2.2",
+  "name": "r076s2-mediasoup",
+  "version": "1.0.0",
   "description": "Mediasoup Sample App",
   "main": "server.js",
   "scripts": {
