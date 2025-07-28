@@ -16,6 +16,7 @@ let producerTransport;
 let consumerTransport;
 let mediasoupRouter;
 
+
 (async () => {
   try {
     await runExpressApp();
@@ -30,8 +31,8 @@ let mediasoupRouter;
 async function runExpressApp() {
   expressApp = express();
   expressApp.use(express.json());
-  expressApp.use(express.static(__dirname));
-
+  //expressApp.use(express.static(__dirname));
+  expressApp.use(express.static(path.join(__dirname, 'public')));
   expressApp.use((error, req, res, next) => {
     if (error) {
       console.warn('Express app error,', error.message);
