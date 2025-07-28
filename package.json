@@ -1,27 +1,21 @@
 {
-  "name": "r076s2-mediasoup",
-  "version": "1.0.0",
-  "description": "ИИ: https://www.perplexity.ai/search/s-uchetom-predydushchego-vopro-CultKxraQie8qLy._alizQ",
+  "name": "mediasoup-sample-app",
+  "version": "1.2.2",
+  "description": "Mediasoup Sample App",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Nosikov-studio/r076s2-mediasoup.git"
+    "start": "browserify client.js -o app-bundle.js; node server.js"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Nosikov-studio/r076s2-mediasoup/issues"
-  },
-  "homepage": "https://github.com/Nosikov-studio/r076s2-mediasoup#readme",
   "dependencies": {
-    "express": "^5.1.0",
-    "http": "^0.0.1-security",
-    "mediasoup": "^3.16.7",
-    "mediasoup-client": "^3.12.5",
-    "socket.io": "^4.8.1",
-    "socket.io-client": "^4.8.1"
+    "express": "^4.16.4",
+    "mediasoup": "3",
+    "mediasoup-client": "3",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0"
+  },
+  "devDependencies": {
+    "requirejs": "^2.3.6"
   }
 }
