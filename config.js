@@ -2,9 +2,12 @@ module.exports = {
   listenIp: '0.0.0.0',
   listenPort: 3000,
   //sslCrt: '/etc/ssl/certs/ssl-cert-snakeoil.pem',
-  sslCrt: '/etc/letsencrypt/live/truruki.ru/fullchain.pem',
+  //sslCrt: '/etc/letsencrypt/live/truruki.ru/fullchain.pem',
   //sslKey: '/etc/ssl/private/ssl-cert-snakeoil.key',
-  sslKey: '/etc/letsencrypt/live/truruki.ru/privkey.pem',
+  //sslKey: '/etc/letsencrypt/live/truruki.ru/privkey.pem',
+  // !!! если у вас Nginx уже делает SSL termination 
+  // (то есть принимает HTTPS и проксирует HTTP в Node.js), 
+  // то внутренний Node.js должен слушать HTTP, а не HTTPS.
   mediasoup: {
     // Worker settings
     worker: {

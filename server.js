@@ -1,6 +1,6 @@
 const mediasoup = require('mediasoup');
 const fs = require('fs');
-const https = require('https');
+const http = require('http');
 const express = require('express');
 const socketIO = require('socket.io');
 const config = require('./config');
@@ -57,7 +57,7 @@ async function runWebServer() {
     cert: fs.readFileSync(sslCrt),
     key: fs.readFileSync(sslKey),
   };
-  webServer = https.createServer(tls, expressApp);
+  webServer = http.createServer(tls, expressApp);
   webServer.on('error', (err) => {
     console.error('starting web server failed:', err.message);
   });
