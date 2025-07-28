@@ -4,6 +4,7 @@ const http = require('http');
 const express = require('express');
 const socketIO = require('socket.io');
 const config = require('./config');
+const path = require('path');
 
 // Global variables
 let worker;
