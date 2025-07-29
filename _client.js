@@ -1,6 +1,9 @@
 const mediasoup = require('mediasoup-client');
 const socketClient = require('socket.io-client');
-const socketPromise = require('./lib/socket.io-promise').promise;
+//const socketPromise = require('./lib/socket.io-promise').promise;
+const SocketIoPromise = require('socket.io-promise');
+const socketPromise = SocketIoPromise.promise;
+//const socketPromise = require('socket.io-promise').promise;
 const config = require('./config');
 
 const hostname = window.location.hostname;
