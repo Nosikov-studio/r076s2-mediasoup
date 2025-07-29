@@ -1,7 +1,13 @@
 const mediasoup = require('mediasoup-client'); // библиотека клиента mediasoup для WebRTC
 const socketClient = require('socket.io-client'); // клиент Socket.IO для общения с сервером
-const SocketIoPromise = require('socket.io-promise'); // обёртка для Socket.IO с промисами
-const socketPromise = SocketIoPromise.promise; // создаём способ запросов с промисами
+//const SocketIoPromise = require('socket.io-promise'); // обёртка для Socket.IO с промисами
+//const socketPromise = SocketIoPromise.promise; // создаём способ запросов с промисами
+const socketPromise = require('socket.io-promise');
+//То есть вы вызываете функцию, передавая ей сокет, и получаете «промис прокси».
+// socket.request = socketPromise(socket);
+
+
+
 const config = require('./config'); // конфигурация, например порт сервера
 
 const hostname = window.location.hostname; // имя хоста страницы
