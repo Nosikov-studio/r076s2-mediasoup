@@ -42,7 +42,9 @@ async function connect() {
     transports: ['websocket'],
   };
 
-  const serverUrl = `https://${hostname}:${config.listenPort}`;
+  //const serverUrl = `https://${hostname}:${config.listenPort}`;
+const serverUrl = `https://${hostname}`;
+
   socket = socketClient(serverUrl, opts);
   socket.request = socketPromise(socket);
 
