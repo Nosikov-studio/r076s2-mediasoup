@@ -1,6 +1,6 @@
 const mediasoup = require('mediasoup');
 const fs = require('fs');
-const https = require('https');
+const http = require('http');
 const express = require('express');
 const socketIO = require('socket.io');
 const config = require('./config');
