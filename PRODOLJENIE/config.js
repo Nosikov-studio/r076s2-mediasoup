@@ -1,0 +1,65 @@
+//config.js
+module.exports = {
+  listenIp: '0.0.0.0',
+  listenPort: 3000,
+  //sslCrt: '/etc/ssl/certs/ssl-cert-snakeoil.pem',
+  //sslCrt: '/etc/letsencrypt/live/truruki.ru/fullchain.pem',
+  //sslKey: '/etc/ssl/private/ssl-cert-snakeoil.key',
+  //sslKey: '/etc/letsencrypt/live/truruki.ru/privkey.pem',
+  // !!! если у вас Nginx уже делает SSL termination 
+  // (то есть принимает HTTPS и проксирует HTTP в Node.js), 
+  // то внутренний Node.js должен слушать HTTP, а не HTTPS.
+  mediasoup: {
+    // Worker settings
+    worker: {
+      rtcMinPort: 10000,
+      rtcMaxPort: 10100,
+      logLevel: 'warn',
+      logTags: [
+        'info',
+        'ice',
+        'dtls',
+        'rtp',
+        'srtp',
+        'rtcp',
+        // 'rtx',
+        // 'bwe',
+        // 'score',
+        // 'simulcast',
+        // 'svc'
+      ],
+    },
+    // Router settings
+    router: {
+      mediaCodecs:
+        [
+          {
+            kind: 'audio',
+            mimeType: 'audio/opus',
+            clockRate: 48000,
+            channels: 2
+          },
+          {
+            kind: 'video',
+            mimeType: 'video/VP8',
+            clockRate: 90000,
+            parameters:
+              {
+                'x-google-start-bitrate': 1000
+              }
+          },
+        ]
+    },
+    // WebRtcTransport settings
+    webRtcTransport: {
+      listenIps: [
+        {
+          ip: '0.0.0.0', // слушаем на всех интерфейсах
+          announcedIp: '85.28.47.165',  // публичный IP сервера (ваш адрес)
+        }
+      ],
+      maxIncomingBitrate: 1500000,
+      initialAvailableOutgoingBitrate: 1000000,
+    }
+  }
+};
